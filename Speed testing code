@@ -1,0 +1,33 @@
+%matplotlib notebook
+
+import numpy as np
+from ipywidgets import *
+import matplotlib.pyplot as plt
+import time
+import math
+
+
+
+
+@interact(y=(-2,4,0.05)) #Slider for fancy purposes 
+
+
+def LogisticalMapPlot (y):
+    start_time = time.time()
+    P=np.linspace(0,y,100000) #geting our fertility variable
+
+    X = P
+    Q = np.random.random(100000) #Our population values
+    
+    
+    for l in range(100):
+        Q=(Q*P)*(1-Q) #calculating what the population will be after certain number of generations (the more the better)
+    
+    Y = Q # Y becomes our attractor point for X
+    
+    
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    line, = ax.plot(X,Y, ls='', marker=',')
+    print("--- %s seconds ---" % (time.time() - start_time))
