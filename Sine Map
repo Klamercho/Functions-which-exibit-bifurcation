@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import math
 
 
-
 def SineMapPlot (y,q):
     
     
@@ -28,3 +27,4 @@ def SineMapPlot (y,q):
     line, = ax.plot(X,Y, ls='', marker=',')
 
 interact(SineMapPlot, y=widgets.IntSlider(min=-10,max=50,step=1,value=2),q=[100,101]);
+
