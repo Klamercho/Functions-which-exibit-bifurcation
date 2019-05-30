@@ -1,0 +1,26 @@
+%matplotlib notebook
+
+import numpy as np
+from ipywidgets import *
+import matplotlib.pyplot as plt
+import math
+
+
+
+def One_D_Mandelbrot_Plot():
+    
+    P=np.linspace(-2,0,100000)
+    
+    X = P
+    Q = np.random.random(100000)
+    
+    
+    for l in range(100):
+        Q= Q**2 +P #calculating what the population will be after certain number of generations (the more the better)
+    
+    Y = Q # Y becomes our attractor point for X 
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    line, = ax.plot(X,Y, ls='', marker=',')
+One_D_Mandelbrot_Plot()
