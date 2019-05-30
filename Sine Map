@@ -1,0 +1,30 @@
+%matplotlib notebook
+
+import numpy as np
+from ipywidgets import *
+import matplotlib.pyplot as plt
+import math
+
+
+
+def SineMapPlot (y,q):
+    
+    
+    P=np.linspace(0,y,100000) #geting our fertility variable
+
+    X = P
+    Q = np.random.random(100000)
+    
+    
+    for l in range(q):
+        Q= P*np.sin(np.pi*Q) #calculating what the population will be after certain number of generations (the more the better)
+    
+    Y = Q # Y becomes our attractor point for X 
+    
+    
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    line, = ax.plot(X,Y, ls='', marker=',')
+
+interact(SineMapPlot, y=widgets.IntSlider(min=-10,max=50,step=1,value=2),q=[100,101]);
