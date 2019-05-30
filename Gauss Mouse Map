@@ -1,0 +1,31 @@
+%matplotlib notebook
+
+import numpy as np
+from ipywidgets import *
+import matplotlib.pyplot as plt
+import time
+import math
+
+def Gauss_Mouse_Map_Plot (a,i,Mouse):
+    
+    P=np.linspace(-1,1,100000)
+    X = P
+    Y = []
+    if Mouse == True:
+        a = 4.9
+
+    Q = np.random.random(100000)
+    
+    
+    for l in range(i):
+        Q= np.exp(-a*Q**2)+P #calculating what the population will be after certain number of generations (the more the better)
+    
+    Y = Q # Y becomes our attractor point for X 
+    
+    
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    line, = ax.plot(X,Y, ls='', marker=',')
+
+interact(Gauss_Mouse_Map_Plot, a= (1,12,0.1),i=fixed(100),Mouse=False);
